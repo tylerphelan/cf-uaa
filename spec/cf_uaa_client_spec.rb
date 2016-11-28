@@ -75,6 +75,27 @@ describe CF::UAA::Client do
 
         expect(response.code).to eq '200'
       end
+
+      it 'calls GET /Users with a filter option' do
+        response = @client.get_users(query: { filter: %(email eq "#{UAA_USERNAME}") })
+
+        expect(response.code).to eq '200'
+        expect(response.json[:resources][0].keys).to eq([
+          :id,
+          :meta,
+          :userName,
+          :name,
+          :emails,
+          :groups,
+          :approvals,
+          :active,
+          :verified,
+          :origin,
+          :zoneId,
+          :passwordLastModified,
+          :schemas
+        ])
+      end
     end
 
     describe '#post_user' do
