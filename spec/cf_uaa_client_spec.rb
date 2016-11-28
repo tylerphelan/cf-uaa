@@ -76,6 +76,38 @@ describe CF::UAA::Client do
         expect(response.code).to eq '200'
       end
     end
+
+    describe '#post_user' do
+      it 'calls POST /Users' do
+        email = FFaker::Internet.email
+        body  = {
+          userName: email,
+          password: FFaker::Internet.password,
+          emails: [
+            { value: email }
+          ]
+        }
+
+        response = @client.post_user(body)
+
+        expect(response.code).to eq '201'
+        expect(response.json.keys).to eq([
+          :id,
+          :meta,
+          :userName,
+          :name,
+          :emails,
+          :groups,
+          :approvals,
+          :active,
+          :verified,
+          :origin,
+          :zoneId,
+          :passwordLastModified,
+          :schemas
+        ])
+      end
+    end
   end
 
   context "with a user's access token" do

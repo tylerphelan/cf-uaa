@@ -52,6 +52,11 @@ class CF::UAA::Client
   end
   alias find_user get_user
 
+  def post_user(body, query: {}, headers: {}, **options)
+    request(Net::HTTP::Post, uri('/Users', query), body, headers, options)
+  end
+  alias create_user post_user
+
   def autologin(body, query: {}, headers: {}, **options)
     request(Net::HTTP::Post, uri('/autologin', query), body, headers, options)
   end
