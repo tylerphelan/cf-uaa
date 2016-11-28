@@ -5,7 +5,7 @@ require 'cf/uaa/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "cf-uaa"
-  spec.version       = Cf::Uaa::VERSION
+  spec.version       = CF::UAA::VERSION
   spec.authors       = ["Tyler Phelan", "Yuki Nishijima"]
   spec.email         = ["tphelan@pivotal.io", "mail@yukinishijima.net"]
   spec.summary       = %q{Ruby client for CF UAA}
