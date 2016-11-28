@@ -57,6 +57,11 @@ class CF::UAA::Client
   end
   alias create_user post_user
 
+  def put_password(id, body, query: {}, headers: {}, **options)
+    request(Net::HTTP::Put, uri("/Users/#{id}/password", query), body, headers, options)
+  end
+  alias update_password put_password
+
   def autologin(body, query: {}, headers: {}, **options)
     request(Net::HTTP::Post, uri('/autologin', query), body, headers, options)
   end

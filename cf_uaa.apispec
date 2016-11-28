@@ -9,5 +9,7 @@ Oven.bake :'CF::UAA::Client', destination: 'lib/' do
   get :user,     '/Users/:id'
   post :user,    '/Users'
 
+  put :password, '/Users/:id/password'
+
   post :autologin, '/autologin', as: :autologin
 end

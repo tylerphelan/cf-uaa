@@ -166,5 +166,26 @@ describe CF::UAA::Client do
         expect(response.code).to eq '200'
       end
     end
+
+    # DO NOT RUN THIS TEST YET!
+    # describe '#update_password' do
+    #   let(:tmp_password) { 'tmp-password' }
+    #
+    #   before do
+    #     @user_id = @client.get_userinfo.json[:user_id]
+    #   end
+    #
+    #   after do
+    #     @client.update_password(@user_id, oldPassword: tmp_password, password: UAA_PASSWORD)
+    #   end
+    #
+    #   it 'calls GET /Users' do
+    #     response = @client.update_password(@user_id, oldPassword: UAA_PASSWORD, password: tmp_password)
+    #
+    #     expect(response.code).to eq '200'
+    #     expect(response.json[:status]).to eq 'ok'
+    #     expect(response.json[:message]).to eq 'password updated'
+    #   end
+    # end
   end
 end
